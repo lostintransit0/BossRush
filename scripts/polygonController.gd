@@ -1,11 +1,7 @@
 extends Polygon2D
+class_name polygonController
 
 var base_polygon: PackedVector2Array
-
-var x_strength: float = 0.0
-
-@export var tilt_strength: float = 0.5
-@export var response_speed: float = 8.0
 
 func _ready() -> void:
 	base_polygon = polygon.duplicate()
@@ -25,11 +21,3 @@ func apply_skew(strength: float) -> void:
 		p[i] = point
 
 	polygon = p
-
-
-func _process(delta: float) -> void:
-	var inputVector = Input.get_vector("left", "right", "up", "down").normalized()
-
-	x_strength = lerp(x_strength, inputVector.x, response_speed * delta)
-
-	apply_skew(x_strength * tilt_strength)
