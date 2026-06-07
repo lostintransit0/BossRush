@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://csnl8u3cx5ayb"]
+
+[ext_resource type="Script" uid="uid://cgvoqct4ank4j" path="res://polygonController.gd" id="1_glv2v"]
+[ext_resource type="Script" uid="uid://bvgrebm3hh7mq" path="res://player.gd" id="1_uu6xs"]
+[ext_resource type="Texture2D" uid="uid://bcdkuixwvr438" path="res://glow.png" id="2_r0du0"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_rxg2q"]
+radius = 2.0
+height = 20.0
+
+[node name="Node2D" type="Node2D" unique_id=951266377]
+
+[node name="Player" type="CharacterBody2D" parent="." unique_id=1423419966]
+position = Vector2(368, 272)
+script = ExtResource("1_uu6xs")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player" unique_id=1619485809]
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_rxg2q")
+
+[node name="Glow" type="Sprite2D" parent="Player" unique_id=1526500747]
+modulate = Color(0, 0, 0, 0.4392157)
+scale = Vector2(0.74999976, 0.1875)
+texture = ExtResource("2_r0du0")
+
+[node name="Polygon2D" type="Polygon2D" parent="Player" unique_id=1253151517]
+polygon = PackedVector2Array(-8, 0, -8, -16, 8, -16, 8, 0)
+uv = PackedVector2Array(-195, 17, -197, -34, -151, -33, -161, 21)
+script = ExtResource("1_glv2v")
+tilt_strength = 0.3
+response_speed = 16.0
